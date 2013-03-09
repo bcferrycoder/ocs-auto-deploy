@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "stackato ALL = (root) NOPASSWD: ALL" >> /etc/sudoers
+echo "hosts:          files dns" >> /etc/nsswitch.conf

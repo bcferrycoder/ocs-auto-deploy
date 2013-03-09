@@ -1,0 +1,5 @@
+#cloud-config
+stackato:
+    nats:
+        ip: 10.12.0.14
+    roles: ['dea']
