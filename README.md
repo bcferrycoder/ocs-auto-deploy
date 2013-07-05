@@ -2,7 +2,7 @@
 
 ## Wednesday Trials
 
-* Download latest 2.8.2 for vbox
+* Download latest 2.10.6 for vbox
 
 * Import into vbox
 
@@ -10,18 +10,20 @@
 
 * fix cloud-init:  
 
-   ssh stackato@vm
-   sudo bash
-   dpkg-reconfigure cloud-init
-   select EC2 then OK
+*  ssh stackato@vm
+*  sudo bash
+*  dpkg-reconfigure cloud-init
+*  select EC2 then OK
 
 * shutdown
 
 * zip the resulting image in ~/VirtualBox\ VMs/
 
-* transfer to ubuntu
+         zip -r Stackato-880-v2.10.6.zip Stackato-880-v2.10.6
 
-* unzip
+* transfer resulting zipfile to ubuntu instance
+
+*   unzip Stackato-880-v2.10.6.zip
 
 * convert to qcow2: qemu-img convert -O qcow2 Stackato-688-v2.8.2-disk1.vmdk stackato-282.qcow2
 
