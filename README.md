@@ -10,10 +10,10 @@
 
 * fix cloud-init:  
 
-*  ssh stackato@vm
-*  sudo bash
-*  dpkg-reconfigure cloud-init
-*  select EC2 then OK
+         ssh stackato@vm
+         sudo bash
+         dpkg-reconfigure cloud-init
+         select EC2 then OK
 
 * shutdown
 
