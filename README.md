@@ -1,6 +1,6 @@
 ## HOWTO: Build Multi-node Stackato Cluster on Openstack
 
-## Wednesday Trials
+## Upload Stackato 10.10.6 template to OCS
 
 * Download latest 2.10.6 for vbox
 
@@ -25,9 +25,9 @@
 
 *   unzip Stackato-880-v2.10.6.zip
 
-* convert to qcow2: qemu-img convert -O qcow2 Stackato-688-v2.8.2-disk1.vmdk stackato-282.qcow2
+* convert to qcow2: qemu-img convert -O qcow2 Stackato-688-v2.10.6-disk1.vmdk stackato-2106.qcow2
 
-* upload image: glance add name=stackato282-cloudinit disk_format=qcow2 container_format=bare < stackato-282.qcow2
+* upload image: glance add name=stackato2106-cloudinit disk_format=qcow2 container_format=bare < stackato-2106.qcow2
 
 * launch new image: euca-run-instances -g stackato-internal -k ocs-stackato ami-00000010
 
