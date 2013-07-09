@@ -1,8 +1,35 @@
 ## HOWTO: Build Multi-node Stackato Cluster on Openstack
 
-## Upload Stackato 10.10.6 template to OCS
+## Prep
 
-* Download latest 2.10.6 for vbox
+1. Install [euca2ools](http://www.eucalyptus.com/download/euca2ools) (Eucalyptus toolsuite for openstack management),
+[glance](http://docs.openstack.org/developer/glance/) (vm management and uploading),  and [qema](http://en.wikibooks.org/wiki/QEMU) (handy for vm image
+conversion): 
+
+        $ sudo apt-get install euca2ools
+        $ sudo apt-get install glance-client
+        $ sudo apt-get install qemu
+
+1. Obtain credentials and environment from your openstack provider,
+add these (in the form of exported enviroment variables) to a source
+file (I'll call it env.sh):
+
+<pre><div class="code">export EC2_URL=https://ocs.jds.sv1.cloudscaling.com/services/Cloud
+export EC2_ACCESS_KEY=2b2b888888888ffa94fakea9d421e23e
+export EC2_SECRET_KEY=2b2b8888888880alsofakea9d421e23e
+
+export OS_AUTH_URL=http://192.168.1.1:99/v2.0
+export OS_TENANT_NAME=my-tenant-name
+export OS_USERNAME=my-user-name</div></pre>
+
+Source this file:
+
+        $  . ./env.sh
+
+
+## Upload Stackato template to OCS
+
+* Download Stackato for vbox
 
 * Import into vbox
 
@@ -30,33 +57,6 @@
 * upload image: glance add name=stackato2106-cloudinit disk_format=qcow2 container_format=bare < stackato-2106.qcow2
 
 * launch new image: euca-run-instances -g stackato-internal -k ocs-stackato ami-00000010
-
-## Prep
-
-1. Install [euca2ools](http://www.eucalyptus.com/download/euca2ools) (Eucalyptus toolsuite for openstack management),
-[glance](http://docs.openstack.org/developer/glance/) (vm management and uploading),  and [qema](http://en.wikibooks.org/wiki/QEMU) (handy for vm image
-conversion): 
-
-        $ sudo apt-get install euca2ools
-        $ sudo apt-get install glance-client
-        $ sudo apt-get install qemu
-
-1. Obtain credentials and environment from your openstack provider,
-add these (in the form of exported enviroment variables) to a source
-file (I'll call it env.sh):
-
-<pre><div class="code">export EC2_URL=https://ocs.jds.sv1.cloudscaling.com/services/Cloud
-export EC2_ACCESS_KEY=2b2b888888888ffa94fakea9d421e23e
-export EC2_SECRET_KEY=2b2b8888888880alsofakea9d421e23e
-
-export OS_AUTH_URL=http://192.168.1.1:99/v2.0
-export OS_TENANT_NAME=my-tenant-name
-export OS_USERNAME=my-user-name</div></pre>
-
-Source this file:
-
-        $  . ./env.sh
-
 
 With the credentials available via the environment, both eucatools and
 and glance are now pre-authorized clients.
