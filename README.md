@@ -33,7 +33,7 @@ Source this file:
 
 * Import into vbox
 
-* add ssh keys to ~root/.ssh and ~stackato/.ssh
+* add ssh keys to ~root/.ssh and ~stackato/.ssh (need to clarify this)
 
 * fix cloud-init:  
 
